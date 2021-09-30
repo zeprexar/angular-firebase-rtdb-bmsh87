@@ -1,0 +1,20 @@
+<div class="flex-container">
+  <span>Connect </span>
+  <input class="flex-stretch" type="text" [(ngModel)]="roomId" placeholder="<Room Id>" [disabled]="disableInputs">
+  <span> as </span>
+  <input class="flex-stretch" type="text" [(ngModel)]="name" placeholder="<Name>" [disabled]="disableInputs">
+  <button (click)="onConnectClick()" [disabled]="disableInputs">Connect</button>
+</div>
+
+<div #messagesDiv class="messages">
+  <div [class]="(name === m.name) ? 'container' : 'container darker'" *ngFor="let m of room?.messages">
+    <p [class]="(name === m.name) ? 'name-left' : 'name-right'">{{m.name}}</p>
+    <p>{{m.text}}</p>
+    <span [class]="(name === m.name) ? 'time-right' : 'time-left'">{{m.messageId | date:'medium'}}</span>
+  </div>
+</div>
+
+<div class="flex-container">
+  <input class="flex-stretch" type="text" [(ngModel)]="text">
+  <button (click)="onSendClick()">Send</button>
+</div>
